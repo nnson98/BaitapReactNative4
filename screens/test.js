@@ -8,9 +8,17 @@ import Home from '../screens/home';
 import ReviewDetails from '../screens/details';
 import {Easing} from 'react-native';
 import Login from '../screens/login';
-import Splash from '../screens/Splash';
 
 const Stack = createStackNavigator();
+/*const AuthStack = createStackNavigator({Home: Login});
+export default function AuthLoadingScrenn (){
+  return(
+    <View style={StyleSheet.container}>
+      <ActivityIndicator/>
+      <StatusBar barStyle="default"/>
+    </View>
+  )
+};*/
 const config = {
   animation: 'spring',
   config: {
@@ -33,7 +41,7 @@ export default function Navigator({navigation}) {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Splash"
+        initialRouteName="Login"
         screenOptions={{
           gestureEnabled: true,
           gestureDirection: 'horizontal',
@@ -45,7 +53,6 @@ export default function Navigator({navigation}) {
         }}
         headerMod="float"
         animation="fade">
-        <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="ReviewDetails" component={ReviewDetails} />
@@ -53,3 +60,14 @@ export default function Navigator({navigation}) {
     </NavigationContainer>
   );
 }
+/*async function loadData(){
+  const isLoggedIn = await AsyncStorage.getItem(isLoggedIn);
+  navigation.navigate(isLoggedIn !== '1'?'Auth': 'App');
+}
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center',
+  }
+})*/

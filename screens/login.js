@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,78 +8,74 @@ import {
   Image,
   Alert,
 } from 'react-native';
+import Home from './home';
+import AsyncStorage from '@react-native-community/async-storage';
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
-  onClickListener = viewId => {
-    Alert.alert('Alert', 'Button pressed ' + viewId);
+export default function Login({navigation}) {
+  const [isLoading, setIsLoading] = useState(true);
+  const userInfo = {username: 'admin', password: '123456'};
+  const [username1, setUserName] = useState('');
+  const [password1, setPassWord] = useState('');
+  const changeHandlerUser = valuser => {
+    setUserName(valuser);
   };
-
-  render() {
-    const navigation = this.props.navigation;
-    return (
-      <View style={styles.container}>
-        <View>
-          <Text style={styles.tittle}>Login Accout</Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <Image
-            style={styles.inputIcon}
-            source={{
-              uri:
-                'https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-mail-icon-png-image_4254693.jpg',
-            }}
-          />
-          <TextInput
-            style={styles.inputs}
-            placeholder="Email"
-            keyboardType="email-address"
-            underlineColorAndroid="transparent"
-            onChangeText={email => this.setState({email})}
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Image
-            style={styles.inputIcon}
-            source={{
-              uri:
-                'https://f0.pngfuel.com/png/684/839/password-computer-icons-unlock-icon-png-clip-art.png',
-            }}
-          />
-          <TextInput
-            style={styles.inputs}
-            placeholder="Password"
-            secureTextEntry={true}
-            underlineColorAndroid="transparent"
-            onChangeText={password => this.setState({password})}
-          />
-        </View>
-        <TouchableOpacity
-          style={[styles.buttonContainer, styles.loginButton]}
-          onPress={() => navigation.navigate('Home')}>
-          <Text style={styles.loginText}>Login</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => this.onClickListener('restore_password')}>
-          <Text>Forgot your password?</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.buttonContainer}
-          onPress={() => this.onClickListener('register')}>
-          <Text>Register</Text>
-        </TouchableOpacity>
+  const changeHandlerPassword = valpass => {
+    setPassWord(valpass);
+  };
+  const login = async () => {
+    if (userInfo.username === username1 && userInfo.password === password1) {
+      await AsyncStorage.setItem('isLoggedIn', '1');
+      navigation.navigate('Home');
+    } else {
+      Alert.alert('login fail');
+    }
+  };
+  return (
+    <View style={styles.container}>
+      <View>
+        <Text style={styles.tittle}>Login Accout</Text>
       </View>
-    );
-  }
+      <View style={styles.inputContainer}>
+        <Image
+          style={styles.inputIcon}
+          source={{
+            uri:
+              'https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-mail-icon-png-image_4254693.jpg',
+          }}
+        />
+        <TextInput
+          style={styles.inputs}
+          placeholder="Email"
+          keyboardType="email-address"
+          underlineColorAndroid="transparent"
+          onChangeText={changeHandlerUser}
+          autoCapitalize="none"
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <Image
+          style={styles.inputIcon}
+          source={{
+            uri:
+              'https://f0.pngfuel.com/png/684/839/password-computer-icons-unlock-icon-png-clip-art.png',
+          }}
+        />
+        <TextInput
+          style={styles.inputs}
+          placeholder="Password"
+          secureTextEntry={true}
+          underlineColorAndroid="transparent"
+          onChangeText={changeHandlerPassword}
+        />
+      </View>
+      <TouchableOpacity
+        style={[styles.buttonContainer, styles.loginButton]}
+        //onPress={() => navigation.navigate('Home')}
+        onPress={login}>
+        <Text style={styles.loginText}>Login</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 const styles = StyleSheet.create({
   container: {
