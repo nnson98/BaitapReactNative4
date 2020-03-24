@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {getUser} from '../screens/UserReducer';
+import {getUser} from '../screens/UserReducers';
 import {CLEAR_NETWORK_FAIL, SEND_NETWORK_FAIL} from './actions';
 
 const initialState = {fetching: false, data: null, err: null};
