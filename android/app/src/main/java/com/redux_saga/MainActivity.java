@@ -1,4 +1,4 @@
-package com.demo2;
+package com.redux_saga;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "Demo2";
+    return "redux_saga";
   }
 }

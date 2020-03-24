@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Demo2.app"
-               BlueprintName = "Demo2"
-               ReferencedContainer = "container:Demo2.xcodeproj">
+               BuildableName = "redux_saga.app"
+               BlueprintName = "redux_saga"
+               ReferencedContainer = "container:redux_saga.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "Demo2Tests.xctest"
-               BlueprintName = "Demo2Tests"
-               ReferencedContainer = "container:Demo2.xcodeproj">
+               BuildableName = "redux_sagaTests.xctest"
+               BlueprintName = "redux_sagaTests"
+               ReferencedContainer = "container:redux_saga.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "Demo2Tests.xctest"
-               BlueprintName = "Demo2Tests"
-               ReferencedContainer = "container:Demo2.xcodeproj">
+               BuildableName = "redux_sagaTests.xctest"
+               BlueprintName = "redux_sagaTests"
+               ReferencedContainer = "container:redux_saga.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Demo2.app"
-            BlueprintName = "Demo2"
-            ReferencedContainer = "container:Demo2.xcodeproj">
+            BuildableName = "redux_saga.app"
+            BlueprintName = "redux_saga"
+            ReferencedContainer = "container:redux_saga.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Demo2.app"
-            BlueprintName = "Demo2"
-            ReferencedContainer = "container:Demo2.xcodeproj">
+            BuildableName = "redux_saga.app"
+            BlueprintName = "redux_saga"
+            ReferencedContainer = "container:redux_saga.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Demo2.app"
-            BlueprintName = "Demo2"
-            ReferencedContainer = "container:Demo2.xcodeproj">
+            BuildableName = "redux_saga.app"
+            BlueprintName = "redux_saga"
+            ReferencedContainer = "container:redux_saga.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
