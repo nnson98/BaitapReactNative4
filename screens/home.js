@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {
   StyleSheet,
   FlatList,
@@ -42,11 +42,15 @@ export default function Home({navigation}) {
   useEffect(() => {
     const timer = setTimeout(() => {
       getUser();
-      setdata(user.data);
-      //setfulldata(user.data);
     }, 1000);
     return () => clearTimeout(timer);
-  });
+  }, []);
+
+  useEffect(() => {
+    setfulldata(user.data);
+    setdata(user.data);
+  }, [user]);
+
   const renderFooter = () => {
     if (!loading) {
       return null;
@@ -57,27 +61,18 @@ export default function Home({navigation}) {
       </View>
     );
   };
-  const renderHeader = () => {
-    return (
-      <Header searchBar rounded>
-        <Item>
-          <Icon name="ios-search" />
-          <Input placeholder="Search" onChangeText={handleSreach} />
-        </Item>
-      </Header>
-    );
-  };
   const handleSreach = text => {
-    setfulldata(user.data);
+    // setfulldata(user.data);
     const formatQuery = text.toLowerCase();
-    const data = _.filter(fulldata, data => {
-      if (data.email.includes(formatQuery)) {
+    const data = _.filter(fulldata, item => {
+      if (item.email.toLowerCase().includes(formatQuery)) {
         return true;
       } else {
         false;
       }
     });
-    setdata({data, query: text});
+    console.log('DATA', data);
+    setdata(data);
   };
   return (
     <View style={styles.container}>
@@ -89,6 +84,12 @@ export default function Home({navigation}) {
             </View>
           </TouchableOpacity>
           <Container>
+            <Header searchBar rounded>
+              <Item>
+                <Icon name="ios-search" />
+                <Input placeholder="Search" onChangeText={handleSreach} />
+              </Item>
+            </Header>
             <List>
               <FlatList
                 data={data}
@@ -109,12 +110,12 @@ export default function Home({navigation}) {
                 )}
                 keyExtractor={item => item.email}
                 ItemSeparatorComponent={renderSeparator}
-                ListHeaderComponent={renderHeader}
+                // ListHeaderComponent={renderHeader}
                 ListFooterComponent={renderFooter}
                 /* refreshing={this.state.refreshing}
-                onRefresh={this.handleRefresh}
-                onEndReachedThreshold={1}
-                onEndReached={this.handleLoadMore}*/
+              onRefresh={this.handleRefresh}
+              onEndReachedThreshold={1}
+              onEndReached={this.handleLoadMore}*/
               />
             </List>
           </Container>

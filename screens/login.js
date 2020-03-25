@@ -33,7 +33,13 @@ export default function Login({navigation}) {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.tittle}>Login Accout</Text>
+        <Image
+          style={styles.img}
+          source={{
+            uri:
+              'https://c4.wallpaperflare.com/wallpaper/78/413/114/assassin-s-creed-minimalism-video-games-wallpaper-preview.jpg',
+          }}
+        />
       </View>
       <View style={styles.inputContainer}>
         <Image
@@ -70,9 +76,11 @@ export default function Login({navigation}) {
       </View>
       <TouchableOpacity
         style={[styles.buttonContainer, styles.loginButton]}
-        //onPress={() => navigation.navigate('Home')}
         onPress={login}>
         <Text style={styles.loginText}>Login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={[styles.buttonContainer, styles.registerbutton]}>
+        <Text style={styles.loginText}>Register</Text>
       </TouchableOpacity>
     </View>
   );
@@ -82,7 +90,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#5257F2',
   },
   tittle: {
     padding: 20,
@@ -124,7 +132,16 @@ const styles = StyleSheet.create({
   loginButton: {
     backgroundColor: '#00b5ec',
   },
+  registerbutton: {
+    backgroundColor: 'red',
+  },
   loginText: {
     color: 'white',
+  },
+  img: {
+    width: 120,
+    height: 120,
+    borderRadius: 120 / 2,
+    marginBottom: 10,
   },
 });
